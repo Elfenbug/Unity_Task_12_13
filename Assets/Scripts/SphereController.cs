@@ -6,7 +6,6 @@ public class SphereController : MonoBehaviour
     [SerializeField] private int _jumpForce = 5;
 
     private Rigidbody _rigidbody;
-    private int _coins;
     private InputHandler _inputHandler;
 
     private void Awake()

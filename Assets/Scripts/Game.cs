@@ -4,10 +4,10 @@ public class Game : MonoBehaviour
 {
     [SerializeField] private float _gameTime = 60f;
     [SerializeField] private int _coinsToWin = 5;
+    [SerializeField] private Character _character;
 
     private float _currentTime;
     private bool _isGameActive;
-    private Coin _coin;
 
     private void Awake()
     {
@@ -37,17 +37,16 @@ public class Game : MonoBehaviour
     {
         _currentTime = _gameTime;
         _isGameActive = true;
-        _coin = GetComponent<Coin>();
     }
 
     private void CoinCondition()
     {
-        if (!_isGameActive)
+        if (_isGameActive == false)
         {
             return;
         }
 
-        if (Coin.TotalCoins >= _coinsToWin)
+        if (_character.CoinCollector.TotalCoins >= _coinsToWin)
         {
             EndGame(true);
         }
@@ -63,7 +62,7 @@ public class Game : MonoBehaviour
         }
         else
         {
-            Debug.Log($"Вы проиграли! Собрано {Coin.TotalCoins}/{_coinsToWin} монет.");
+            Debug.Log($"Вы проиграли! Собрано {_character.CoinCollector.TotalCoins}/{_coinsToWin} монет.");
         }
     }
 
